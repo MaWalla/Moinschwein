@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  # TODO finalize this later on
+  # moinschwein:
+  #   image: moinschwein
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - postgres
+
+  postgres:
+    image: postgres:14
+    # Port mapping on the database is for development only
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=moinschwein
+      - POSTGRES_USER=moinschwein
+      - POSTGRES_PASSWORD=moinschwein
+    volumes:
+      - "./data:/var/lib/postgresql/data"

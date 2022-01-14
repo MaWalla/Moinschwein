@@ -1,0 +1,7 @@
+*.iml
+.idea
+env
+*.sqlite3
+__pycache__
+data
+*.mo
