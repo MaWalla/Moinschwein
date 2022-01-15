@@ -1,0 +1,21 @@
+{% extends 'moinschwein/modals/base.html' %} {% load i18n %}
+
+{% block modal_id %}self-accusation-modal{% endblock %}
+
+{% block modal_title %}{% trans 'self accusation' %}{% endblock %}
+
+{% block modal_body %}
+    <p>{% trans 'Thanks for being honest, its for a good cause after all! Please select the word you said below.' %}</p>
+    <form id="self-accusation" action="{% url 'submit_accusation' %}" method="post">
+        {% csrf_token %}
+        <input id="offender" name="offender" value="{{ request.user.id }}" hidden>
+        <input id="snitch" name="snitch" value="{{ request.user.id }}" hidden>
+        <select id="word" class="form-select" name="word">
+            {% for word in words %}
+                <option value="{{ word.id }}" selected>{{ word }}</option>
+            {% endfor %}
+        </select>
+    </form>
+{% endblock %}
+
+{% block button_id %}self-accusation-button{% endblock %}

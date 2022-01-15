@@ -24,4 +24,5 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('live-accusations/', LiveAccusationView.as_view(), name='live_accusations'),
+    path('submit-accusation/', SubmitAccusationView.as_view(), name='submit_accusation'),
 ]

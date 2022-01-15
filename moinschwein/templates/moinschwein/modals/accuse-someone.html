@@ -1,0 +1,25 @@
+{% extends 'moinschwein/modals/base.html' %} {% load i18n %}
+
+{% block modal_id %}accuse-someone-modal{% endblock %}
+
+{% block modal_title %}{% trans 'accuse-someone' %}{% endblock %}
+
+{% block modal_body %}
+    <p>{% trans 'You heard someone say a "bad" word? accuse them here for a good cause!' %}</p>
+    <form id="accuse-someone" action="{% url 'submit_accusation' %}" method="post">
+        {% csrf_token %}
+        <select id="offender" class="form-select" name="offender">
+            {% for user in users %}
+                <option value="{{ user.id }}" selected>{{ user.get_full_name }} ({{ user.username }})</option>
+            {% endfor %}
+        </select>
+        <input id="snitch" name="snitch" value="{{ request.user.id }}" hidden>
+        <select id="word" class="form-select" name="word">
+            {% for word in words %}
+                <option value="{{ word.id }}" selected>{{ word }}</option>
+            {% endfor %}
+        </select>
+    </form>
+{% endblock %}
+
+{% block button_id %}accuse-someone-button{% endblock %}

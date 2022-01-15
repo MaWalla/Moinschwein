@@ -1,34 +1,78 @@
 {% extends 'moinschwein/base.html' %} {% load i18n static %}
 
+{% block extra-styles %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
 {% block content %}
     <div class="container">
-        <div class="overview card frosted-glass mt-3">
-            <p>
-                {% blocktrans %}
-                    Hi there {{ full_name }}, you currently have to pay {{ accusations_against_self }}€, making up
-                    about {{ accusations_against_self_percentage }}% of the money pool!
-                {% endblocktrans %}
-            </p>
+        <div class="row mt-3">
+            <div class="col">
+                <div class="overview card frosted-glass">
+                    <p>
+                        {% blocktrans with full_name=request.user.get_full_name %}
+                            Hi there {{ full_name }}, you currently
+                            said "bad" words {{ accusations_against_self }} times, making up
+                            about {{ accusations_against_self_percentage }}% of total "bad" words said!
+                        {% endblocktrans %}
+                    </p>
 
-            <a class="btn btn-link">{% trans 'Personal Stats' %}</a>
-            <a class="btn btn-link">{% trans 'Global Stats' %}</a>
-        </div>
-
-        <div class="card frosted-glass mt-3">
-            <p>{% trans 'Latest accusations (live)' %}</p>
-            <div id="live-container">
-
+                     <a class="btn btn-link">{% trans 'Personal Stats' %}</a>
+                    <a class="btn btn-link">{% trans 'Global Stats' %}</a>
+                </div>
             </div>
         </div>
 
-        <div class="actions">
-            <div class="self-accusation"></div>
-            <div class="foreign-accusation"></div>
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card frosted-glass">
+                    <p>{% trans 'Latest accusations (live)' %}</p>
+                    <div id="live-container">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <div class="accusation-button card frosted-glass">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#self-accusation-modal">
+                        {% trans 'quick self accusation' %}
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="accusation-button card frosted-glass">
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#accuse-someone-modal">
+                        {% trans 'accuse someone' %}
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
+
+    {% include 'moinschwein/modals/self-accusation.html' %}
+    {% include 'moinschwein/modals/accuse-someone.html' %}
 {% endblock %}
 
 {% block extra-scripts %}
     <script src="{% static 'js/live-accusations.js' %}"></script>
     <script>updateLiveAccusations({% url 'live_accusations' %})</script>
+    <script src="{% static 'js/submit-accusation.js' %}"></script>
+    <script>
+        submitAccusation(
+            {% url 'submit_accusation' %},
+            '{% csrf_token %}',
+            'self-accusation',
+            'self-accusation-button',
+        )
+
+        submitAccusation(
+            {% url 'submit_accusation' %},
+            '{% csrf_token %}',
+            'accuse-someone',
+            'accuse-someone-button',
+        )
+    </script>
 {% endblock %}
