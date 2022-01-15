@@ -1,0 +1,24 @@
+{% extends 'moinschwein/base.html' %} {% load i18n static %}
+
+{% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="login-box-container">
+        <div class="login-box card">
+            <h3 class="text-center mt-4">{% trans 'Login' %}</h3>
+            <form class="form-center" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- TODO error handling-->
+                <label class="form-label" for="id_username">{% trans 'Username' %}</label>
+                <input class="form-input form-control" id="id_username" type="text" name="username" autofocus="" required="">
+                <div class="mt-2"></div>
+                <label class="form-label" for="id_password">{% trans 'Password' %}</label>
+                <input class="form-input form-control" id="id_password" type="password" name="password" required="">
+
+                <button class="btn btn-primary form-button mt-3" type="submit">{% trans 'Login' %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
