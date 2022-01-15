@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', UserLoginView.as_view(), name='login'),
     path('logout/', UserLogoutView.as_view(), name='logout'),
-    path('dashboard/', DashboardView.as_view(), name='dashboard')
+    path('', IndexView.as_view(), name='index'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('live-accusations/', LiveAccusationView.as_view(), name='live_accusations'),
 ]

@@ -1,5 +1,34 @@
-{% extends 'moinschwein/base.html' %}
+{% extends 'moinschwein/base.html' %} {% load i18n static %}
 
 {% block content %}
-    {{ accusations_against_self }}
+    <div class="container">
+        <div class="overview card frosted-glass mt-3">
+            <p>
+                {% blocktrans %}
+                    Hi there {{ full_name }}, you currently have to pay {{ accusations_against_self }}€, making up
+                    about {{ accusations_against_self_percentage }}% of the money pool!
+                {% endblocktrans %}
+            </p>
+
+            <a class="btn btn-link">{% trans 'Personal Stats' %}</a>
+            <a class="btn btn-link">{% trans 'Global Stats' %}</a>
+        </div>
+
+        <div class="card frosted-glass mt-3">
+            <p>{% trans 'Latest accusations (live)' %}</p>
+            <div id="live-container">
+
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="self-accusation"></div>
+            <div class="foreign-accusation"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra-scripts %}
+    <script src="{% static 'js/live-accusations.js' %}"></script>
+    <script>updateLiveAccusations({% url 'live_accusations' %})</script>
 {% endblock %}
