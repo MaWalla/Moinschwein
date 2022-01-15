@@ -27,3 +27,13 @@ class Accusation(models.Model):
         related_name='accusations',
         verbose_name=_('word'),
     )
+    timestamp = models.DateTimeField(_('timestamp'), auto_now=True)
+
+    def __str__(self):
+        return _('%(word)s for %(offender)s (%(offender_id)s) by %(snitch)s (%(snitch_id)s)') % {
+            'word': self.word,
+            'offender': self.offender.get_full_name(),
+            'offender_id': self.offender.id,
+            'snitch': self.snitch.get_full_name(),
+            'snitch_id': self.snitch.id,
+        }

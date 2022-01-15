@@ -7,3 +7,6 @@ __all__ = ['Word']
 
 class Word(models.Model):
     bad_word = models.CharField(_('bad word'), max_length=64)
+
+    def __str__(self):
+        return self.bad_word

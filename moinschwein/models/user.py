@@ -7,4 +7,9 @@ __all__ = ['User']
 
 
 class User(AbstractUser):
-    pass
+
+    def __str__(self):
+        return _('%(full_name)s (%(username)s)') % {
+            'full_name': self.get_full_name(),
+            'username': self.username,
+        }
