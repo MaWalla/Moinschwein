@@ -106,6 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'moinschwein.User'
 
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
