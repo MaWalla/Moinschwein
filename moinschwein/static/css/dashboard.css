@@ -6,3 +6,9 @@
 .accusation-button button {
     padding: 64px 0;
 }
+
+.statistic-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

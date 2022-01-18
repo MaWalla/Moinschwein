@@ -13,6 +13,7 @@
                 <option value="{{ user.id }}" selected>{{ user.get_full_name }} ({{ user.username }})</option>
             {% endfor %}
         </select>
+    <div class="mt-2"></div>
         <input id="snitch" name="snitch" value="{{ request.user.id }}" hidden>
         <select id="word" class="form-select" name="word">
             {% for word in words %}
