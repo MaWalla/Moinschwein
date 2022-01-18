@@ -23,6 +23,8 @@ urlpatterns = [
     path('logout/', UserLogoutView.as_view(), name='logout'),
     path('', IndexView.as_view(), name='index'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('password/', PasswordChangeView.as_view(), name='password'),
     path('live-accusations/', LiveAccusationView.as_view(), name='live_accusations'),
     path('submit-accusation/', SubmitAccusationView.as_view(), name='submit_accusation'),
 ]

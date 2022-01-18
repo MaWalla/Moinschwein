@@ -2,11 +2,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from moinschwein.views.common import AuthRedirectMixin
+
 
 __all__ = ['UserLoginView', 'UserLogoutView']
 
 
-class UserLoginView(LoginView):
+class UserLoginView(AuthRedirectMixin, LoginView):
     template_name = 'moinschwein/login.html'
 
     def get_success_url(self):

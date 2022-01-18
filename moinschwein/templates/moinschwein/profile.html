@@ -1,0 +1,45 @@
+{% extends 'moinschwein/base.html' %} {% load i18n static %}
+
+{% block extra-styles %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card frosted-glass content-box mt-3">
+                    <h4 class="text-center headline">{% trans 'Edit profile' %}</h4>
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.errors }}
+
+                        <label for="{{ form.username.id_for_label }}">{% trans 'Username' %}</label>
+                        {{ form.username }}
+                        <div class="mt-2"></div>
+
+                        <label for="{{ form.first_name.id_for_label }}">{% trans 'First name' %}</label>
+                        {{ form.first_name }}
+                        <div class="mt-2"></div>
+
+                        <label for="{{ form.last_name.id_for_label }}">{% trans 'Last name' %}</label>
+                        {{ form.last_name }}
+                        <div class="mt-2"></div>
+
+                        <label for="{{ form.email.id_for_label }}">{% trans 'E-Mail' %}</label>
+                        {{ form.email }}
+                        <div class="mt-2"></div>
+
+                        <p>{{ form.password.help_text|safe }}</p>
+
+                        <div class="form-buttons">
+                            <a class="btn btn-secondary" href="{% url 'dashboard' %}">{% trans 'Cancel'%}</a>
+                            <button class="btn btn-primary mr-1" type="submit">{% trans 'Update Profile' %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

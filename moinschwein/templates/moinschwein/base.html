@@ -21,7 +21,7 @@
                 {% if request.user.is_anonymous %}
                     <a class="btn btn-link" href="{% url 'login' %}">{% trans 'Login' %}</a>
                 {% else %}
-                    <a class="btn btn-link" href="">{% trans 'Profile' %}</a>
+                    <a class="btn btn-link" href="{% url 'profile' %}">{% trans 'Profile' %}</a>
                     <a class="btn btn-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
                 {% endif %}
             </div>
