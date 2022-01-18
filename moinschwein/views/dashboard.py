@@ -25,6 +25,7 @@ class DashboardView(LoginRequiredMixin, CommonTemplateView):
             'accusations_against_self_percentage': accusations_against_self_percentage,
             'words': Word.objects.all(),
             'users': User.objects.all(),
+            'live_entries': range(5),
         }
 
 

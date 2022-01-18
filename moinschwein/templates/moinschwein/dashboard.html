@@ -31,7 +31,9 @@
                 <div class="card frosted-glass content-box">
                     <p>{% trans 'Latest accusations (live)' %}</p>
                     <div id="live-container">
-
+                        {% for range in live_entries %}
+                            <p>-</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
