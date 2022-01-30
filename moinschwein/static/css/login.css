@@ -28,3 +28,25 @@ form {
     width: 75%;
     margin-bottom: 0;
 }
+
+.login-buttons {
+    margin-top: 64px;
+    display: flex;
+    width: 100%;
+    padding: 0 32px;
+    align-items: end;
+    justify-content: space-between;
+}
+
+p {
+    margin: 0;
+}
+
+.ms-button {
+    background-color: white;
+    height: 48px;
+}
+
+.sso-button {
+    height: 24px;
+}

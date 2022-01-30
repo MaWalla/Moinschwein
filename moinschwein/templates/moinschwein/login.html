@@ -10,14 +10,23 @@
             <h3 class="text-center mt-4">{% trans 'Login' %}</h3>
             <form class="form-center" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <!-- TODO error handling-->
+                {{ form.errors }}
                 <label class="form-label" for="id_username">{% trans 'Username' %}</label>
                 <input class="form-input form-control" id="id_username" type="text" name="username" autofocus="" required="">
                 <div class="mt-2"></div>
                 <label class="form-label" for="id_password">{% trans 'Password' %}</label>
                 <input class="form-input form-control" id="id_password" type="password" name="password" required="">
 
-                <button class="btn btn-primary form-button mt-3" type="submit">{% trans 'Login' %}</button>
+                <div class="login-buttons">
+                    <div class="sso">
+                        <p>{% trans 'Log in with:' %}</p>
+                        <a class="btn ms-button" href="{% url 'microsoft:to-auth-redirect' %}">
+                            <img class="sso-button" src="{% static 'img/microsoft.png' %}">
+                        </a>
+                    </div>
+
+                    <button class="btn btn-primary form-button mt-3" type="submit">{% trans 'Login' %}</button>
+                </div>
             </form>
         </div>
     </div>

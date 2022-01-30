@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'microsoft_auth',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'microsoft_auth.backends.MicrosoftAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'moinschwein.urls'
@@ -69,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'moinschwein.wsgi.application'
+SITE_ID = int(os.getenv('MOINSCHWEIN_SITE_ID', 1))
 
 
 # Database
@@ -109,6 +117,15 @@ AUTH_USER_MODEL = 'moinschwein.User'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/dashboard/'
+
+
+# Microsoft
+MICROSOFT_AUTH_CLIENT_ID = os.getenv('MOINSCHWEIN_MS_CLIENT_ID')  # typically a uuid
+MICROSOFT_AUTH_CLIENT_SECRET = os.getenv('MOINSCHWEIN_MS_CLIENT_SECRET')  # typically a random string
+MICROSOFT_AUTH_TENANT_ID = os.getenv('MOINSCHWEIN_MS_TENANT_ID')  # typically a uuid
+
+MICROSOFT_AUTH_LOGIN_TYPE = 'ma'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
