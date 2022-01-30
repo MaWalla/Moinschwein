@@ -76,7 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'moinschwein.wsgi.application'
-SITE_ID = int(os.getenv('MOINSCHWEIN_SITE_ID', 1))
+SITE_ID = int(os.getenv('MOINSCHWEIN_SITE_ID', 2))  # default to 2, since 1 usually is example.com
 
 
 # Database
