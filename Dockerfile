@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 RUN apt-get update && apt-get install -y gettext && python manage.py compilemessages
