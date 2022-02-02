@@ -44,3 +44,21 @@ class DashboardTestCase(TestCase):
         content, *_ = json.loads(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertIn(sample_accusation.timestamp.strftime('%H:%M:%S'), content)
+
+    def test_accusation_counter_without_accusations(self):
+        self.client.login(**self.credentials)
+
+        response = self.client.get(reverse('dashboard'))
+        self.assertEqual(response.context_data.get('accusations_against_self_percentage'), 0.0)
+
+    def test_accusation_counter_with_accusation(self):
+        self.client.login(**self.credentials)
+
+        Accusation.objects.create(
+            offender=self.user,
+            snitch=self.user,
+            word=self.sample_word,
+        )
+
+        response = self.client.get(reverse('dashboard'))
+        self.assertEqual(response.context_data.get('accusations_against_self_percentage'), 100.0)

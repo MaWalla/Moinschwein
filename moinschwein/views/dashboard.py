@@ -18,7 +18,7 @@ class DashboardView(LoginRequiredMixin, CommonTemplateView):
     def get_context_data(self, **kwargs):
         accusations_against_self = Accusation.objects.filter(offender=self.request.user).count()
         accusations_against_self_percentage = round(
-            (accusations_against_self / (Accusation.objects.count() * 100 or 1)),
+            (accusations_against_self / (Accusation.objects.count() or 1) * 100),
             2,
         )
 
@@ -27,7 +27,7 @@ class DashboardView(LoginRequiredMixin, CommonTemplateView):
             'accusations_against_self': accusations_against_self,
             'accusations_against_self_percentage': accusations_against_self_percentage,
             'words': Word.objects.all(),
-            'users': User.objects.all(),
+            'users': User.objects.filter(is_active=True),
             'live_entries': range(5),
         }
 
