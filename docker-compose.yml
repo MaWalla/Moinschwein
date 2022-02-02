@@ -1,22 +1,45 @@
 version: '3.3'
 
 services:
-  # TODO finalize this later on
-  # moinschwein:
-  #   image: moinschwein
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - postgres
+  nginx:
+    image: nginx:stable
+    volumes:
+      - "./moinschwein.conf:/etc/nginx/conf.d/moinschwein.conf:ro"
+      - "/etc/letsencrypt:/etc/letsencrypt:ro"
+      - "/var/www/static:/var/www/static:ro"
+      - "/opt/moinschwein/nginx/logs:/var/log/nginx"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - moinschwein
+
+  moinschwein:
+    image: mawalla/moinschwein
+    container_name: moinschwein
+    volumes:
+      - "/var/www/static:/app/static"
+      - "/opt/moinschwein/moinschwein/logs:/var/log/"
+    environment:
+      - DJANGO_SETTINGS_MODULE=moinschwein.settings.docker
+      - MOINSCHWEIN_SECRET_KEY=ransom-string
+      - MOINSCHWEIN_DB_HOST=moinschwein_db
+      - MOINSCHWEIN_ALLOWED_HOSTS=your-domain
+      - MOINSCHWEIN_MS_CLIENT_ID=some-uuid
+      - MOINSCHWEIN_MS_CLIENT_SECRET=random-string
+      - MOINSCHWEIN_MS_TENANT_ID=some-uuid
+    depends_on:
+      - postgres
 
   postgres:
     image: postgres:14
-    # Port mapping on the database is for development only
-    ports:
-      - "5432:5432"
+    container_name: moinschwein_db
     environment:
       - POSTGRES_DB=moinschwein
       - POSTGRES_USER=moinschwein
       - POSTGRES_PASSWORD=moinschwein
     volumes:
-      - "./data:/var/lib/postgresql/data"
+      - "/opt/moinschwein/postgres:/var/lib/postgresql/data"
+    # Port mapping on the database is for development only
+    # ports:
+    #   - "5432:5432"

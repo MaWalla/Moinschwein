@@ -1,0 +1,10 @@
+*.iml
+.idea
+.git
+env
+*.sqlite3
+__pycache__
+data
+*.mo
+Dockerfile
+docker-compose.yml
