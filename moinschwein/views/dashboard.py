@@ -39,7 +39,7 @@ class LiveAccusationView(LoginRequiredMixin, View):
         return JsonResponse(
             [
                 _('%(time)s: %(offender)s said %(word)s (reported by %(snitch)s)') % {
-                    'time': accusation.timestamp.strftime('%H:%M:%S'),
+                    'time': accusation.local_timestamp.strftime('%H:%M:%S'),
                     'offender': accusation.offender.get_full_name(),
                     'word': accusation.word,
                     'snitch': accusation.snitch.get_full_name(),

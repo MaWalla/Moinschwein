@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from .user import User
@@ -28,6 +29,10 @@ class Accusation(models.Model):
         verbose_name=_('word'),
     )
     timestamp = models.DateTimeField(_('timestamp'), auto_now=True)
+
+    @property
+    def local_timestamp(self):
+        return timezone.localtime(self.timestamp)
 
     def __str__(self):
         return _('%(word)s for %(offender)s (%(offender_id)s) by %(snitch)s (%(snitch_id)s)') % {
