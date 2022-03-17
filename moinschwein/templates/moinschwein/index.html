@@ -1,4 +1,8 @@
-{% extends 'moinschwein/base.html' %} {% load i18n %}
+{% extends 'moinschwein/base.html' %} {% load static i18n %}
+
+{% block extra-styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -12,6 +16,7 @@
                     {% endblocktrans %}</p>
 
                     <p>{% trans 'Please login and help out!' %}</p>
+                    <a class="mt-2" href="https://github.com/MaWalla/Moinschwein"><img class="github-link-image" src="{% static 'img/GitHub-Mark-120px-plus.png' %}"></a>
                 </div>
             </div>
         </div>
