@@ -28,4 +28,6 @@ urlpatterns = [
     path('password/', PasswordChangeView.as_view(), name='password'),
     path('live-accusations/', LiveAccusationView.as_view(), name='live_accusations'),
     path('submit-accusation/', SubmitAccusationView.as_view(), name='submit_accusation'),
+    path('statistic/global/', StatisticView.as_view(), name='statistic_global'),
+    path('statistic/global/data/', StatisticDataView.as_view(), name='statistic_global_data'),
 ]

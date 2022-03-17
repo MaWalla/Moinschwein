@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-30 14:18-0600\n"
+"POT-Creation-Date: 2022-03-17 18:32-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,8 +67,8 @@ msgstr ""
 msgid "Personal Stats (coming soon)"
 msgstr "Persönliche Statistiken (kommt bald)"
 
-msgid "Global Stats (coming soon)"
-msgstr "Globale Statistiken (kommt bald)"
+msgid "Global Stats"
+msgstr "Globale Statistiken"
 
 msgid "Latest accusations (live)"
 msgstr "Aktuelle Anschuldigungen (live)"
@@ -80,7 +80,7 @@ msgid "accuse someone"
 msgstr "jemanden Anzeigen"
 
 msgid "Welcome to the Moinschwein app!"
-msgstr "Willkommen zur Moinschwin App!"
+msgstr "Willkommen zur Moinschwein App!"
 
 #, python-format
 msgid ""
@@ -90,7 +90,7 @@ msgid ""
 "                    "
 msgstr ""
 "\n"
-"                        Durch das begrüßen von Leuten auf die norddeutsche Art,\n"
+"                        Durch das Begrüßen von Leuten auf die norddeutsche Art,\n"
 "                        haben wir bereits %(total_accusations)s€ für einen guten Zweck gesammelt.\n"
 "                    "
 
@@ -154,6 +154,12 @@ msgstr "zurück zum Dashboard"
 msgid "Update Profile"
 msgstr "Profil aktualisieren"
 
+msgid "How often was each user accused?"
+msgstr "Wie oft wurde jeder Benutzer angezeigt?"
+
+msgid "How often has each user accused someone?"
+msgstr "Wie oft hat jeder Benutzer jemanden angezeigt?"
+
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -163,3 +169,6 @@ msgstr "%(time)s: %(offender)s sagte %(word)s (angezeigt von %(snitch)s)"
 
 msgid "Index"
 msgstr "Hauptseite"
+
+msgid "Statistics"
+msgstr ""

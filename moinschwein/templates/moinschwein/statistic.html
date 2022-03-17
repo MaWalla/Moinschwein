@@ -1,0 +1,30 @@
+{% extends 'moinschwein/base.html' %} {% load static i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col mt-3">
+                <div class="card frosted-glass content-box">
+                    <h5 class="text-center">{% trans 'How often was each user accused?' %}</h5>
+                    <canvas id="accused"></canvas>
+                </div>
+            </div>
+            <div class="col mt-3">
+                <div class="card frosted-glass content-box">
+                    <h5 class="text-center">{% trans 'How often has each user accused someone?' %}</h5>
+                    <canvas id="accusing"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra-scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/statistic.js' %}"></script>
+    <script>
+        const url = '{% url 'statistic_global_data' %}';
+
+        overallStatistic(url);
+    </script>
+{% endblock %}
