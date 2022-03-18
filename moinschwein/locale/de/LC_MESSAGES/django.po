@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 18:32-0500\n"
+"POT-Creation-Date: 2022-03-17 18:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,14 +97,17 @@ msgstr ""
 msgid "Please login and help out!"
 msgstr "Melde dich bitte an und helf mit!"
 
+msgid "Log in with:"
+msgstr "Anmelden mit:"
+
+msgid "...or use username/password (for admins)"
+msgstr "...oder benutz Username/Passwort (für Admins)"
+
 msgid "Username"
 msgstr "Nutzername"
 
 msgid "Password"
 msgstr "Passwort"
-
-msgid "Log in with:"
-msgstr "Anmelden mit:"
 
 msgid "You heard someone say a \"bad\" word? accuse them here for a good cause!"
 msgstr "Du hast gehört wie jemand ein \"böses\" Wort gesagt hat? Zeig die Person hier für einen guten Zweck an!"

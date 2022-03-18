@@ -5,19 +5,11 @@
 {% endblock %}
 
 {% block content %}
-    <div class="login-box-container">
-        <div class="login-box card frosted-glass">
-            <h3 class="text-center mt-4">{% trans 'Login' %}</h3>
-            <form class="form-center" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.errors }}
-                <label class="form-label" for="id_username">{% trans 'Username' %}</label>
-                <input class="form-input form-control" id="id_username" type="text" name="username" autofocus="" required="">
-                <div class="mt-2"></div>
-                <label class="form-label" for="id_password">{% trans 'Password' %}</label>
-                <input class="form-input form-control" id="id_password" type="password" name="password" required="">
-
-                <div class="login-buttons">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                <div class="overview card frosted-glass content-box">
+                    <h3 class="text-center mt-4">{% trans 'Login' %}</h3>
                     <div class="sso">
                         <p>{% trans 'Log in with:' %}</p>
                         <a class="btn ms-button" href="{% url 'microsoft:to-auth-redirect' %}">
@@ -25,9 +17,29 @@
                         </a>
                     </div>
 
-                    <button class="btn btn-primary form-button mt-3" type="submit">{% trans 'Login' %}</button>
+                    <button id="show-more" class="btn btn-link mt-5">{% trans '...or use username/password (for admins)' %}</button>
+                    <form id="regular-login" class="form-center mt-5 d-none" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.errors }}
+                        <label class="form-label" for="id_username">{% trans 'Username' %}</label>
+                        <input class="form-input form-control" id="id_username" type="text" name="username" autofocus="" required="">
+
+                        <label class="form-label mt-2" for="id_password">{% trans 'Password' %}</label>
+                        <input class="form-input form-control" id="id_password" type="password" name="password" required="">
+
+                        <button class="btn btn-primary form-button mt-3" type="submit">{% trans 'Login' %}</button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block extra-scripts %}
+    <script>
+        document.getElementById('show-more').onclick = function () {
+            this.classList.add('d-none');
+            document.getElementById('regular-login').classList.remove('d-none');
+        }
+    </script>
 {% endblock %}

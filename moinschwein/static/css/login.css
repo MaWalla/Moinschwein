@@ -1,52 +1,21 @@
-.login-box-container {
-    position: absolute;
-    width: 100vw;
-    height: calc(100vh - 81px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.login-box {
-    width: 95vw;
-    max-width: 600px;
-    height: 95vh;
-    min-height: 280px;
-    max-height: 440px;
-}
-
-form {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-label,.form-input {
-    width: 75%;
-    margin-bottom: 0;
-}
-
-.login-buttons {
-    margin-top: 64px;
-    display: flex;
-    width: 100%;
-    padding: 0 32px;
-    align-items: end;
-    justify-content: space-between;
-}
-
 p {
     margin: 0;
 }
 
+.sso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .ms-button {
     background-color: white;
+
+    width: 160px;
     height: 48px;
 }
 
 .sso-button {
+    margin-top: 5px;
     height: 24px;
 }
