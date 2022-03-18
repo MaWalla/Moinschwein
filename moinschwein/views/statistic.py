@@ -23,7 +23,11 @@ class StatisticDataView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         user_ids = User.objects.values_list('id', flat=True)
 
-        accused = User.objects.annotate(amount=Count('offender_accusations')).values(
+        accused = User.objects.annotate(
+            amount=Count('offender_accusations'),
+        ).order_by(
+            'amount',
+        ).values(
             'amount',
             'id',
             'first_name',
@@ -31,7 +35,11 @@ class StatisticDataView(LoginRequiredMixin, View):
         )
 
         # for some reason I have to annotate each count in a seperate query or the number goes wild
-        accusing = User.objects.annotate(amount=Count('snitch_accusations')).values(
+        accusing = User.objects.annotate(
+            amount=Count('snitch_accusations'),
+        ).order_by(
+            'amount',
+        ).values(
             'amount',
             'id',
             'first_name',
